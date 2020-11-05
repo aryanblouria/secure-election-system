@@ -75,12 +75,12 @@ int main()
 		T[i] = key[(i%(sizeof(key)/sizeof(*key)))];
 	}
 
-    S = permute(S, T);
+    S = permute(S,T);
 
 	ifstream input;
-	input.open("Input.txt");
+	input.open("test.txt",ios::in);
 	getline(input,data);
-
+	input.close();
 	string es = enc(S, T, data);
 	string ds = dec(S, T, es);
 	cout << "Input Message: " << data << endl;
@@ -88,9 +88,11 @@ int main()
 	cout << "Decrypted Message:  " << ds << endl;
 
 	ofstream enct, dect;
-	enct.open("Encrypted.txt");
-	dect.open("Decrypted.txt");
+	enct.open("Encrypted.txt",ios::out);
+	dect.open("Decrypted.txt",ios::out);
 	enct << es;
 	dect << ds;
+	enct.close();
+	dect.close();
 	return 0;
 }
