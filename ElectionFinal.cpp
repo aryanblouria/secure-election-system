@@ -1374,10 +1374,11 @@ redo:
     case 3:
           lsbdeccan();
           lsbdecvot();
+          goto redo;
     case 4:
         dcrypt_main();
         rc4modecr();
-        break;
+        goto redo;
     case 5:
         return;
     default:
