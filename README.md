@@ -8,7 +8,7 @@ We are trying to implement various methods and algorithms to ensure the safety o
 <h1>Overview</h1>
 
 <p>We have designed a General Election System in which the data generated from voting is stored securely by different encryption techniques and algorithms. 
-As of now, five modules have been implemented, namely Candidate, Voter, Election, Login and Admin modules. We have also worked on implementing three encryption algorithms to securely store the generated data - Modified LSB-steganography,Modified RSA algorithm and Modified RC4.
+As of now, five modules have been implemented, namely Candidate, Voter, Election, Login and Admin modules. We have also worked on implementing three encryption algorithms to securely store the generated data - LSB-steganography,Modified RSA algorithm and Modified RC4.
 We have used C++(14) for building up all the modules in the project. We have also used OpenCV for C++ library in the steganography implementation.</p>
 
 <h1>References</h1>
