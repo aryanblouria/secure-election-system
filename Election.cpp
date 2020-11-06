@@ -1356,7 +1356,8 @@ redo:
         f1.close();
         encrypt_main();
         rc4modenc();
-        break;
+        remove("D://ElectionWin.txt");
+        goto redo;
     case 2:
         for(int i=0; i<totct; i++)
         {
@@ -1501,15 +1502,15 @@ int main()
         totct--;
     if(totvt!=0)
         totvt--;
-    cout<<"These are "<<totct<<" candidates found stored till now : \n\n";
-    for(int i=0;i<totct;i++)
-        ct[i].showdata();
-    system("PAUSE");
-    system("CLS");
-    cout<<"These are "<<totvt<<" voters found stored till now : \n\n";
-    for(int i=0;i<totvt;i++)
-        vt[i].showdata();
-    system("PAUSE");
+//    cout<<"These are "<<totct<<" candidates found stored till now : \n\n";
+//    for(int i=0;i<totct;i++)
+//        ct[i].showdata();
+//    system("PAUSE");
+//    system("CLS");
+//    cout<<"These are "<<totvt<<" voters found stored till now : \n\n";
+//    for(int i=0;i<totvt;i++)
+//        vt[i].showdata();
+//    system("PAUSE");
 
 Choose:
     ;
@@ -1535,6 +1536,8 @@ Choose:
         savefile();
         lsbencvoter();
         lsbenccandidate();
+        remove("D://CtData.txt");
+        remove("D://VtData.txt");
         return 0;
     default:
         cout<<"Invalid Choice";
