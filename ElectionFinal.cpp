@@ -596,7 +596,7 @@ int rc4modenc()
 	enct.open("D://Electionrc4enc.txt",ios::out);
 	enct << es;
 	enct.close();
-	return ;
+	return 0;
 }
 
 
@@ -622,19 +622,6 @@ string dec(vector<int>s, vector<int> t, string p)
 		decrypted += (char)decrypt[r];
 	}
 	return decrypted;
-}
-
-vector<int> permute(vector<int> s, vector<int> t)
-{
-	int j = 0, temp;
-	for (int i = 0; i< 256; i++)
-    {
-		j = (j + s[i] + t[i]) % 256;
-        temp = s[i];
-        s[i] = s[j];
-		s[j] = temp;
-	}
-    return s;
 }
 
 int rc4modecr()
