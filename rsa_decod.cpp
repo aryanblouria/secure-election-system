@@ -72,8 +72,8 @@ void decrypt()
     string st,st1;
     ifstream fcdc,ftmp;
     i=0;
-    fcdc.open("D://ElectionWinCoded.txt",ios::in);
-    ftmp.open("D://tmp.txt",ios::in);
+    fcdc.open("C://ISA//ElectionWinCoded.txt",ios::in);
+    ftmp.open("C://ISA//tmp.txt",ios::in);
     cout<<"\n\nThe Encrypted File Contains\n\n";
     while(fcdc)
     {
@@ -110,8 +110,14 @@ void decrypt()
         i++;
     }
     m[i] = -1;
+    ofstream fdcd;
+    fdcd.open("C://ISA//ElectionWinDecoded.txt",ios::out);
     cout << "\nTHE DECRYPTED MESSAGE IS\n";
     for (i = 0; m[i] != -1; i++)
-        printf("%c", (char)m[i]);
+    {
+        printf("%c", m[i]);
+        fdcd<<(char)m[i];
+    }
+    fdcd.close();
     cout<<"\n\n";
 }
