@@ -22,7 +22,7 @@ int main()
     cout<<"\nThe Message is as follows : \n";
     ifstream f1;
     string tp;
-    f1.open("C://ISA//ElectionWin.txt",ios::in);
+    f1.open("Input.txt",ios::in);
      while(f1)
         {
          if(f1.eof())
@@ -100,9 +100,9 @@ void encrypt()
     en[i] = -1;
     cout << "\nTHE ENCRYPTED MESSAGE IS\n";
     ofstream fcd;
-    fcd.open("C://ISA//ElectionWinCoded.txt",ios::out);
+    fcd.open("Encrypted.txt",ios::out);
     ofstream ftmp;
-    ftmp.open("C://ISA//tmp.txt",ios::out);
+    ftmp.open("Temp.txt",ios::out);
     for (i = 0; en[i] != -1; i++)
         {
          printf("%ld ", en[i]);
