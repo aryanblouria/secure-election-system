@@ -1,23 +1,17 @@
 #include<bits/stdc++.h>
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <windows.h>
-#include <sys/stat.h>
-#include<opencv.hpp>
-#include<highgui.hpp>
-#include<opencv2/imgproc/imgproc.hpp>
-
-
-using namespace cv;
-
+#include<iostream>
+#include<string>
+#include<fstream>
+#include<conio.h>
+#include<windows.h>
+#include<sys/stat.h>
 using namespace std;
 
 int totvt=0,totct=0;
 
 struct voter
 {
-    string name,vid,aadhar,mob,gender,add,street,city,state,voted_for;
+    string name,vid,aadhar,mob,gender,add,voted_for;
     bool voted;
     int m,d,y;
 
@@ -44,32 +38,25 @@ struct voter
     }
     void getinfo()
     {
-        cout<<"Hello New Voter, \nPlease enter the following data to register yourself as a voter.";
-        cout<<"\n\nEnter your Name : ";
+        cout<<"\nHello New Voter, \nPlease enter the following data to register yourself as a voter.";
+        cout<<"\n\nEnter your Name: ";
         getline(cin,name);
-        cout<<"Enter your Gender : ";
+        cout<<"Enter your Gender: ";
         getline(cin,gender);
-        cout<<"Enter your Aadhar Number : ";
+        cout<<"Enter your Aadhar Number: ";
         getline(cin,aadhar);
-        cout<<"Enter your Mobile number : ";
+        cout<<"Enter your Mobile number: ";
         getline(cin,mob);
-        cout<<"\nEnter date of birth below \n\n";
-        cout<<"Enter the date (dd) : ";
+        cout<<"\nEnter your date of birth below \n\n";
+        cout<<"Enter the date (dd): ";
         cin>>d;
-        cout<<"Enter the month (mm) : ";
+        cout<<"Enter the month (mm): ";
         cin>>m;
         cout<<"Enter the year (yyyy): ";
         cin>>y;
-        cout<<"\nEnter your address below  ";
-        cout<<"\n\nEnter the House Address :";
+        cout<<"\nEnter your Address: ";
         getline(cin,add);
         getline(cin,add);
-        cout<<"Enter the Street Name : ";
-        getline(cin,street);
-        cout<<"Enter the City Name : ";
-        getline(cin,city);
-        cout<<"Enter the State : ";
-        getline(cin,state);
         voted=false;
         genvotid();
     }
@@ -83,51 +70,40 @@ struct voter
         tp.clear();
         tp=aadhar.substr(0,4);
         vid.append(tp);
-        cout<<"\n\nYour Voter ID has been generated.";
-        cout<<"\n\nYour Voter Id is "<<vid;
-        cout<<"\n\nPlease do not share your Voter Id with anyone else.\n\n";
+        cout<<"\nYour Voter ID has been generated.";
+        cout<<"\nYour Voter Id is "<<vid<<"\n\n";
         system("PAUSE");
     }
 
     void showdata()
     {
-        cout<<"\n\nName : "<<name;
-        cout<<"\nGender : "<<gender;
-        cout<<"\nAadhar Number : "<<aadhar;
-        cout<<"\nMobile Number : "<<mob;
-        cout<<"\nDate of birth : "<<d<<" - "<<m<<" - "<<y;
-        cout<<"\nAddress : "<<add<<", "<<street<<", "<<city<<", "<<state;
-        cout<<"\nVoter ID : "<<vid<<"\n\n";
-        cout<<"\nUsername :"<<usnm;
+        cout<<"\n\nName: "<<name;
+        cout<<"\nGender: "<<gender;
+        cout<<"\nAadhar Number: "<<aadhar;
+        cout<<"\nMobile Number: "<<mob;
+        cout<<"\nDate of birth: "<<d<<"-"<<m<<"-"<<y;
+        cout<<"\nAddress: "<<add;
+        cout<<"\nVoter ID: "<<vid<<"\n";
+        cout<<"\nUsername: "<<usnm;
         cout<<"\nPassword: "<<pswd<<"\n\n";
-//         cout<<"\n\nPress Any Key to Move Back to the Main Screen.";
         system("PAUSE");
     }
 
     void addchange()
     {
-        cout<<"\n\nEnter your new address below \n\n";
-        cout<<"Enter the House Address :";
+        cout<<"\nEnter your new Address: ";
         getline(cin,add);
         getline(cin,add);
-        cout<<"Enter the Street Name : ";
-        getline(cin,street);
-        cout<<"Enter the City Name : ";
-        getline(cin,city);
-        cout<<"Enter the State : ";
-        getline(cin,state);
-        cout<<"\n\nYour new address has been successfully updated.\n\n";
-//         cout<<"\n\nPress Any Key to Move Back to the Main Screen.";
+        cout<<"\nYour new address has been updated successfully.\n\n";
         system("PAUSE");
     }
 
     void mobchange()
     {
-        cout<<"\n\nEnter your new mobile number : ";
+        cout<<"\nEnter your new mobile number: ";
         getline(cin,mob);
         getline(cin,mob);
-        cout<<"\n\nYour new mobile number has been updates successfully.\n\n";
-//         cout<<"\n\nPress Any Key to Move Back to the Main Screen.";
+        cout<<"\nYour new mobile number has been updated successfully.\n\n";
         system("PAUSE");
     }
 } vt[50],currvt;
@@ -135,7 +111,7 @@ struct voter
 struct candidate
 {
     string name,candidate_id,aadhar,mob,gender;
-    string add,street,city,state,party_name,party_slogan;
+    string add,party_name,party_slogan;
     int m,d,y,votes;
     string retcanid()
     {
@@ -143,8 +119,8 @@ struct candidate
     }
     void showvotes()
     {
-        cout<<"\n\nCandidate Name : "<<name<<"\n";
-        cout<<"Votes Received : "<<votes<<"\n\n";
+        cout<<"\nCandidate Name : "<<name<<"\n";
+        cout<<"Votes Received : "<<votes<<"\n";
     }
     void voteadd()
     {
@@ -165,33 +141,26 @@ struct candidate
     }
     void getinfo()
     {
-        cout<<"Welcome New Candidate, Please fill out the following information to register.\n\n";
-        cout<<"Enter your Name : ";
+        cout<<"\nWelcome New Candidate, Please fill out the following information to register.\n\n";
+        cout<<"Enter your Name: ";
         getline(cin,name);
-        cout<<"Enter your Gender : ";
+        cout<<"Enter your Gender: ";
         getline(cin,gender);
-        cout<<"Enter your Aadhar Number : ";
+        cout<<"Enter your Aadhar Number: ";
         getline(cin,aadhar);
-        cout<<"Enter your Mobile number : ";
+        cout<<"Enter your Mobile number: ";
         getline(cin,mob);
-        cout<<"\nEnter date of birth below\n\n";
-        cout<<"Enter the date (dd) : ";
+        cout<<"\nEnter your date of birth below\n\n";
+        cout<<"Enter the date (dd): ";
         cin>>d;
-        cout<<"Enter the month (mm) : ";
+        cout<<"Enter the month (mm): ";
         cin>>m;
         cout<<"Enter the year (yyyy): ";
         cin>>y;
-        cout<<"\n\nEnter your address below\n\n";
-        cout<<"Enter the house address :";
+        cout<<"\nEnter your Address: ";
         getline(cin,add);
         getline(cin,add);
-        cout<<"Enter the street name : ";
-        getline(cin,street);
-        cout<<"Enter the city name : ";
-        getline(cin,city);
-        cout<<"Enter the state : ";
-        getline(cin,state);
-        cout<<"\n\nEnter the details of the political party you are affiliated with below \n";
+        cout<<"\nEnter the details of the political party you are affiliated with below \n";
         cout<<"\nEnter the Party Name: ";
         getline(cin,party_name);
         cout<<"Enter the Party Slogan: ";
@@ -211,48 +180,36 @@ struct candidate
         tp.clear();
         tp=aadhar.substr(0,4);
         candidate_id.append(tp);
-        cout<<"\n\nYour Candidate ID has been generated.";
-        cout<<"\n\nYour Candidate Id is "<<candidate_id;
+        cout<<"\nYour Candidate ID has been generated.";
+        cout<<"\nYour Candidate ID is "<<candidate_id;
     }
     void showdata()
     {
-        cout<<"\n\nYour data has been stored as follows :";
-        cout<<"\n\nPersonal Data";
-        cout<<"\n\nName : "<<name;
-        cout<<"\nGender : "<<gender;
-        cout<<"\nAadhar Number : "<<aadhar;
-        cout<<"\nMobile Number : "<<mob;
-        cout<<"\nDate of birth : "<<d<<" - "<<m<<" - "<<y;
-        cout<<"\nAddress : "<<add<<", "<<street<<", "<<city<<", "<<state;
-        cout<<"\n\n";
-        cout<<"\nCandidate ID : "<<candidate_id;
-        cout<<"\n\nParty Data\n\n";
-        cout<<"\nParty Name : "<<party_name;
-        cout<<"\nParty Slogan : "<<party_slogan;
-        cout<<"\n\nPlease do not share your Candidate Id with anyone else.\n\n";
+        cout<<"\n\nName: "<<name;
+        cout<<"\nGender: "<<gender;
+        cout<<"\nAadhar Number: "<<aadhar;
+        cout<<"\nMobile Number: "<<mob;
+        cout<<"\nDate of birth: "<<d<<"-"<<m<<"-"<<y;
+        cout<<"\nAddress: "<<add;
+        cout<<"\nCandidate ID: "<<candidate_id;
+        cout<<"\nParty Name: "<<party_name;
+        cout<<"\nParty Slogan: "<<party_slogan<<"\n\n";
         system("PAUSE");
     }
     void addchange()
     {
-        cout<<"\n\nEnter your new address below : \n\n";
-        cout<<"Enter the house address :";
+        cout<<"\nEnter your new Address: ";
         getline(cin,add);
         getline(cin,add);
-        cout<<"Enter the street name : ";
-        getline(cin,street);
-        cout<<"Enter the city name : ";
-        getline(cin,city);
-        cout<<"Enter the state : ";
-        getline(cin,state);
-        cout<<"\n\nYour new address has been successfully updated.\n\n";
+        cout<<"\nYour new address has been updated successfully.\n\n";
         system("PAUSE");
     }
     void mobchange()
     {
-        cout<<"\n\nEnter your new Mobile Number : ";
+        cout<<"\nEnter your new Mobile Number: ";
         getline(cin,mob);
         getline(cin,mob);
-        cout<<"\nYour new mobile number has been updates successfully.\n\n";
+        cout<<"\nYour new mobile number has been updated successfully.\n\n";
         system("PAUSE");
     }
     string retaadhar()
@@ -261,7 +218,8 @@ struct candidate
     }
 } ct[50],currct;
 
-long int p, q, n, t, flag, e[100], d[100], temp[100], j, m[100], en[100], i,r;
+
+long int p, q, n, t, flag, e[100], d[100], temp[1000], j, m[1000], en[1000], i,r;
 string msg;
 int prime(long int);
 void ce();
@@ -291,243 +249,11 @@ bool issetbit(char ch, int pos)
      return false;
     }
 
-int lsbencvoter()
-    {
-     string ipim,iptxt,opim;
-     ipim = "D:/insta.png";
-     iptxt = "D:/VtData.txt";
-     opim = "D:/insvot.png";
-       ifstream file(iptxt);
-	   if(!file.is_open()) {
-		cout << "File Error\n";
-		exit(-1);
-	    }
-     Mat image = imread(ipim);
-     if(image.empty())
-        {
-         cout<<"Image Error\n";
-         exit(-1);
-        }
-     char ch;
-     file.get(ch);
-     int bit_count = 0;
-     bool last_null_char = false;
-     bool encoded = false;
-
-     for(int row = 0; row < image.rows;row++)
-        {
-         for(int col = 0;col < image.cols;col++)
-            {
-             for(int clr = 0;clr < 3;clr++)
-                {
-
-                 Vec3b pixel = image.at<Vec3b>(Point(row,col));
-
-                 if(issetbit(ch,7-bit_count))
-                    pixel.val[clr] |= 1;
-                 else
-                    pixel.val[clr] &= ~1;
-
-                 image.at<Vec3b>(Point(row,col)) = pixel;
-                 bit_count++;
-
-                 if(last_null_char && bit_count == 8)
-                   {
-                    encoded = true;
-                    goto OUTv;
-                   }
-
-                 if(bit_count == 8)
-                   {
-                    bit_count = 0;
-                    file.get(ch);
-
-                    if(file.eof())
-                      {
-                       last_null_char = true;
-                       ch='\0';
-                      }
-                   }
-                }
-            }
-        }
-
-     OUTv: ;
-
-     if(!encoded)
-       {
-        cout<<"Message is too big. try a larger image.";
-        exit(-1);
-       }
-
-       imwrite(opim,image);
-       return 0;
-    }
-
-int lsbenccandidate()
-    {
-     string ipim,iptxt,opim;
-     ipim = "D:/insta.png";
-     iptxt = "D:/CtData.txt";
-     opim = "D:/inscan.png";
-       ifstream file(iptxt);
-	   if(!file.is_open()) {
-		cout << "File Error\n";
-		exit(-1);
-	    }
-     Mat image = imread(ipim);
-     if(image.empty())
-        {
-         cout<<"Image Error\n";
-         exit(-1);
-        }
-     char ch;
-     file.get(ch);
-     int bit_count = 0;
-     bool last_null_char = false;
-     bool encoded = false;
-
-     for(int row = 0; row < image.rows;row++)
-        {
-         for(int col = 0;col < image.cols;col++)
-            {
-             for(int clr = 0;clr < 3;clr++)
-                {
-
-                 Vec3b pixel = image.at<Vec3b>(Point(row,col));
-
-                 if(issetbit(ch,7-bit_count))
-                    pixel.val[clr] |= 1;
-                 else
-                    pixel.val[clr] &= ~1;
-
-                 image.at<Vec3b>(Point(row,col)) = pixel;
-                 bit_count++;
-
-                 if(last_null_char && bit_count == 8)
-                   {
-                    encoded = true;
-                    goto OUTc;
-                   }
-
-                 if(bit_count == 8)
-                   {
-                    bit_count = 0;
-                    file.get(ch);
-
-                    if(file.eof())
-                      {
-                       last_null_char = true;
-                       ch='\0';
-                      }
-                   }
-                }
-            }
-        }
-
-     OUTc:;
-
-     if(!encoded)
-       {
-        cout<<"Message is too big. try a larger image.";
-        exit(-1);
-       }
-
-       imwrite(opim,image);
-       return 0;
-    }
-
-
 bool isBitSet(char ch, int pos) {
 	ch = ch >> pos;
 	if(ch & 1)
 		return true;
 	return false;
-}
-
-int lsbdecvot() {
-
-   string ipim;
-	ipim = "D:/insvot.png";
-	Mat image = imread(ipim);
-	if(image.empty()) {
-		cout << "Image Error\n";
-		exit(-1);
-	}
-
-
-    ofstream f1;
-    f1.open("D://VTDecoded.txt",ios::out);
-	char ch=0;
-	int bit_count = 0;
-	for(int row=0; row < image.rows; row++) {
-		for(int col=0; col < image.cols; col++) {
-			for(int color=0; color < 3; color++) {
-				Vec3b pixel = image.at<Vec3b>(Point(row,col));
-				if(isBitSet(pixel.val[color],0))
-					ch |= 1;
-				bit_count++;
-				if(bit_count == 8) {
-					if(ch == '\0')
-						goto OUTvt;
-					bit_count = 0;
-					cout << ch;
-					f1<<ch;
-					ch = 0;
-				}
-				else {
-					ch = ch << 1;
-				}
-
-			}
-		}
-	}
-	OUTvt:;
-	f1.close();
-    return 0;
-}
-
-
-int lsbdeccan() {
-
-   string ipim;
-	ipim = "D:/inscan.png";
-	Mat image = imread(ipim);
-	if(image.empty()) {
-		cout << "Image Error\n";
-		exit(-1);
-	}
-
-
-    ofstream f1;
-    f1.open("D://CTDecoded.txt",ios::out);
-	char ch=0;
-	int bit_count = 0;
-	for(int row=0; row < image.rows; row++) {
-		for(int col=0; col < image.cols; col++) {
-			for(int color=0; color < 3; color++) {
-				Vec3b pixel = image.at<Vec3b>(Point(row,col));
-				if(isBitSet(pixel.val[color],0))
-					ch |= 1;
-				bit_count++;
-				if(bit_count == 8) {
-					if(ch == '\0')
-						goto OUTct;
-					bit_count = 0;
-					cout << ch;
-					f1<<ch;
-					ch = 0;
-				}
-				else {
-					ch = ch << 1;
-				}
-
-			}
-		}
-	}
-	OUTct:;
-	f1.close();
-    return 0;
 }
 
 
@@ -554,7 +280,6 @@ string enc(vector<int>s, vector<int> t, string p)
 	}
 	return encrypted;
 }
-
 
 vector<int> permute(vector<int> s, vector<int> t)
 {
@@ -584,16 +309,14 @@ int rc4modenc()
     S = permute(S,T);
 
 	ifstream input;
-	input.open("D://ElectionWin.txt",ios::in);
+	input.open("C://ELECT//Winner.txt",ios::in);
 	getline(input,data);
 	input.close();
 
 	string es = enc(S, T, data);
-	cout << "Input Message: " << data << endl;
-	cout << "Encrypted Message:  " << es << endl;
 
 	ofstream enct;
-	enct.open("D://Electionrc4enc.txt",ios::out);
+	enct.open("C://ELECT//WinnerEncoded.txt",ios::out);
 	enct << es;
 	enct.close();
 	return 0;
@@ -639,16 +362,14 @@ int rc4modecr()
     S = permute(S,T);
 
 	ifstream input;
-	input.open("D://Electionrc4enc.txt",ios::in);
+	input.open("C://ELECT//WinnerEncoded.txt",ios::in);
 	getline(input,es);
 	input.close();
 
 	string ds = dec(S, T, es);
-	cout << "Encrypted Message:  " << es << endl;
-	cout << "Decrypted Message:  " << ds << endl;
 
 	ofstream dect;
-	dect.open("D://Electionrc4dec.txt",ios::out);
+	dect.open("C://ELECT//WinnerDecoded.txt",ios::out);
 	dect << ds;
 	dect.close();
 	return 0;
@@ -719,7 +440,6 @@ void vregister()
             currvt.getinfo();
             vt[totvt]=currvt;
             totvt++;
-//			 system("PAUSE");
             system("CLS");
         }
     }
@@ -760,11 +480,8 @@ void vlogin()
         }
         if(flag)
         {
-            cout<<"Enter Password : ";
-//           cin.get();
+            cout<<"Password: ";
             getline(cin,password);
-            cout<<password<<"\n";;
-            //cout<<vt.pswd;
             if(password==currvt.pswd)
             {
                 cout << "\nLogin successful.\n";
@@ -805,28 +522,26 @@ void elect()
         return;
     }
 
-    for(int i=0; i<totct; i++)
-    {
-        ct[i].showdata();
-        cout<<"Press Enter to show the next candidate.";
-    }
     system("CLS");
     char ans;
     bool vtd=false;
-    cout<<"\n\nNow you can select which Candidate to vote for : ";
+    cout<<"Select which Candidate to vote for: \n";
     for(int i=0; i<totct; i++)
     {
         if(!vtd)
         {
+            cout<<"\nCandidate #"<<i+1;
+            cout<<"\n-----------";
             ct[i].showdata();
-            cout<<"Do you want to vote for this Candidate ? (Please type Y or N)";
+            cout<<"\nDo you want to vote for this Candidate? (Please type Y or N): ";
             cin>>ans;
             if(ans=='y'||ans=='Y')
             {
                 ct[i].voteadd();
                 currvt.vote();
                 currct=ct[i];
-                cout<<"You have successfully voted for this candidate.";
+                cout<<"\nYou have successfully voted for this candidate.\n";
+                system("PAUSE");
                 vtd=true;
                 vupdate();
                 cupdate();
@@ -880,12 +595,14 @@ selopt:
 voteraction:
     ;
     system("CLS");
-    cout<<"1.View your data.";
-    cout<<"\n2.Change your address.";
-    cout<<"\n3.Update your mobile number.";
-    cout<<"\n4.Goto election Screen.";
-    cout<<"\n5.Logout";
-    cout<<"\n\nEnter your choice : ";
+    cout<<"Voter Menu\n";
+    cout<<"----------\n";
+    cout<<"\n1. View your data";
+    cout<<"\n2. Change your address";
+    cout<<"\n3. Update your mobile number";
+    cout<<"\n4. Go to election screen";
+    cout<<"\n5. Logout";
+    cout<<"\n\nEnter your choice: ";
     cin>>ch;
     switch(ch)
     {
@@ -909,11 +626,10 @@ voteraction:
         return;
     default:
         cout<<"Invalid Choice Entered.";
+        system("PAUSE");
         goto voteraction;
     }
 }
-
-
 
 void cregister()
 {
@@ -923,7 +639,7 @@ void cregister()
     system("CLS");
     cout << "Create a new account: \n";
     cout << "\nEnter your username: ";
-//	 cin.get();
+    getline(cin, usn);
     getline(cin, usn);
 
     if(usn.empty())
@@ -979,7 +695,6 @@ void cregister()
             currct.getinfo();
             ct[totct]=currct;
             totct++;
-//			 system("PAUSE");
             system("CLS");
         }
     }
@@ -1019,11 +734,8 @@ void clogin()
         }
         if(flag)
         {
-            cout<<"Enter Password : ";
-//            cin.get();
+            cout<<"Password: ";
             getline(cin,password);
-//              cout<<password<<"\n";;
-            //cout<<ct.pswd;
             if(password==currct.pswd)
             {
                 cout << "\nLogin successful.\n";
@@ -1034,7 +746,7 @@ void clogin()
                 cout << "\nIncorrect password.\n";
                 do
                 {
-                    cout<<"Please re-enter your Password :";
+                    cout<<"Please re-enter your Password: ";
                     //cin.get();
                     getline(cin,password);
                 }
@@ -1095,11 +807,13 @@ selopt:
 candidateaction:
     ;
     system("CLS");
-    cout<<"1.View your data.";
-    cout<<"\n2.Change your address.";
-    cout<<"\n3.Update your mobile number.";
-    cout<<"\n4.Logout";
-    cout<<"\n\nEnter your choice : ";
+    cout<<"Candidate Menu\n";
+    cout<<"--------------\n";
+    cout<<"\n1. View your data";
+    cout<<"\n2. Change your address";
+    cout<<"\n3. Update your mobile number";
+    cout<<"\n4. Logout";
+    cout<<"\n\nEnter your choice: ";
     cin>>ch;
     switch(ch)
     {
@@ -1130,10 +844,9 @@ int encrypt_main()
     p=17;
     q=19;
     r=23;
-    cout<<"\nThe Message is as follows : \n";
     ifstream f1;
     string tp;
-    f1.open("D://ElectionWin.txt",ios::in);
+    f1.open("C://ELECT//CandidateList.txt",ios::in);
      while(f1)
         {
          if(f1.eof())
@@ -1143,9 +856,7 @@ int encrypt_main()
          getline(f1,tp);
          msg.append(tp);
         }
-     cout<<msg;
      f1.close();
-     cout<<"\n\n";
     for (i = 0; msg[i] != '\0'; i++)
         m[i] = msg[i];
     n = p * q * 2;
@@ -1208,16 +919,19 @@ void encrypt()
         i++;
     }
     en[i] = -1;
-    cout << "\nTHE ENCRYPTED MESSAGE IS\n";
     ofstream fcd;
-    fcd.open("D://ElectionWinCoded.txt",ios::out);
+    fcd.open("C://ELECT//CandidateListEncoded.txt",ios::out);
     ofstream ftmp;
-    ftmp.open("D://tmp.txt",ios::out);
+    ftmp.open("C://ELECT//Temp.txt",ios::out);
     for (i = 0; en[i] != -1; i++)
         {
-         printf("%ld ", en[i]);
-         fcd<<en[i];
-         fcd<< " ";
+         if (en[i] == -283)
+            fcd<<"\n";
+         else
+         {
+            fcd<<en[i];
+            fcd<<" ";
+         }
          ftmp<<temp[i]<<" ";
         }
     fcd<<"-1";
@@ -1243,9 +957,8 @@ void decrypt()
     string st,st1;
     ifstream fcdc,ftmp;
     i=0;
-    fcdc.open("D://ElectionWinCoded.txt",ios::in);
-    ftmp.open("D://tmp.txt",ios::in);
-    cout<<"\n\nThe Encrypted File Contains\n\n";
+    fcdc.open("C://ELECT//CandidateListDecoded.txt",ios::in);
+    ftmp.open("C://ELECT//Temp.txt",ios::in);
     while(fcdc)
     {
         if(fcdc.eof())
@@ -1254,9 +967,7 @@ void decrypt()
         }
         fcdc>>st;
         ftmp>>st1;
-//        cout<<stol(st)<<" ";
         en[i]=stol(st);
-//        cout<<en[i]<<" ";
         if(en[i]!=-1)
           {
            temp[i]=stol(st1);
@@ -1281,14 +992,16 @@ void decrypt()
         i++;
     }
     m[i] = -1;
-    cout << "\nTHE DECRYPTED MESSAGE IS\n";
-    for (i = 0; m[i] != -1; i++)
-        printf("%c", (char)m[i]);
-//    cout<<"\n\n";
     ofstream fcddc;
-    fcddc.open("D://CandidateWinDecoded.txt",ios::out);
+    fcddc.open("C://ELECT//CandidateListDecoded.txt",ios::out);
     for (i = 0; m[i] != -1; i++)
-        fcddc<<(char)m[i];
+    {
+        if ((char)m[i] == ';')
+            fcddc<<"\n";
+        else
+            fcddc<<(char)m[i];
+    }
+
     fcddc.close();
 }
 
@@ -1296,14 +1009,14 @@ void admin_func()
 {
     system("CLS");
     string usid,pass;
-    cout<<"Enter the administrator username : ";
+    cout<<"Enter administrator username: ";
     cin.get();
     getline(cin,usid);
     if(usid=="@dm!n")
     {
 reenter:
         ;
-        cout<<"\nEnter the password : ";
+        cout<<"Enter administrator password: ";
         getline(cin,pass);
         if(pass!="passw0rd")
         {
@@ -1321,18 +1034,20 @@ reenter:
 redo:
     ;
     system("CLS");
-    cout<<"\n\nHello Admin";
-    cout<<"\n\n1.Display the votes received by each Candidate and the winning Candidate.\n(It also stores the name and number of votes received in a new file)";
-    cout<<"\n2.Reset the votes.";
-    cout<<"\n3.Decrypt the Candidate and Voter Data Files.";
-    cout<<"\n4.Decrypt the Winning Candidate Data File";
-    cout<<"\n5.Logout";
-    cout<<"\n\nEnter your choice : ";
+    cout<<"Hello Admin!";
+    cout<<"\n\n1. Display votes received by each candidate and winning candidate";
+    cout<<"\n2. Reset the votes";
+    cout<<"\n3. Decrypt the Candidates List File";
+    cout<<"\n4. Decrypt the Winning Candidate Data File";
+    cout<<"\n5. Logout";
+    cout<<"\n\nEnter your choice: ";
     cin>>ch;
     ofstream f1;
     switch(ch)
     {
     case 1:
+        cout << "\nVotes Per Candidate";
+        cout << "\n-------------------\n";
         for(int i=0; i<totct; i++)
         {
             ct[i].showvotes();
@@ -1342,21 +1057,14 @@ redo:
                 tp=ct[i];
             }
         }
-        cout<<"\n\nThe candidate who won is \n\n";
+        cout<<"\nWinning Candidate";
+        cout<<"\n-----------------";
         tp.showdata();
-        f1.open("D://ElectionWin.txt",ios::out);
-//        f1<<"Name "<<tp.name<<"    ";
-//        f1<<"Candidate_ID "<<tp.candidate_id<<"    ";
-//        f1<<"Gender "<<tp.gender<<"    ";
-//        f1<<"Mobile Number "<<tp.mob<<"    ";
-//        f1<<"Party "<<tp.party_name<<"     ";
-//        f1<<"Party Slogan "<<tp.party_slogan<<"     ";
-//        f1<<"Votes Received "<<to_string(tp.votes)<<"     ";
-        f1<<"The winning candidate is "<<tp.name<<" with "<<to_string(tp.votes)<<" amount of votes.";
+        f1.open("C://ELECT//Winner.txt",ios::out);
+        f1<<"Winning candidate: "<<tp.name<<" - "<<to_string(tp.votes)<<" votes.";
         f1.close();
         encrypt_main();
         rc4modenc();
-        remove("D://ElectionWin.txt");
         goto redo;
     case 2:
         for(int i=0; i<totct; i++)
@@ -1369,16 +1077,18 @@ redo:
         }
         vupdate();
         cupdate();
-        cout<<"The voting Status has been reset successfully.\n";
+        cout<<"\nThe voting status has been reset successfully.\n\n";
         system("PAUSE");
         goto redo;
     case 3:
-          lsbdeccan();
-          lsbdecvot();
-          goto redo;
-    case 4:
         dcrypt_main();
+        cout<<"\nFile decrypted.";
+        getch();
+        goto redo;
+    case 4:
         rc4modecr();
+        cout<<"\nFile decrypted.";
+        getch();
         goto redo;
     case 5:
         return;
@@ -1393,7 +1103,7 @@ redo:
 void getdata()
 {
     ifstream fvt,fct;
-    fvt.open("VoterData.txt",ios::in);
+    fvt.open("C://ELECT//VoterData.txt",ios::in);
     totct=totvt=0;
     if(!fvt)
     {
@@ -1412,7 +1122,7 @@ void getdata()
         }
         fvt.close();
     }
-    fct.open("CandidateData.txt",ios::in);
+    fct.open("C://ELECT//CandidateData.txt",ios::in);
     if(!fct)
     {
         totct=0;
@@ -1437,7 +1147,7 @@ void storedata()
     if(totvt!=0)
     {
         ofstream fv;
-        fv.open("VoterData.txt",ios::out);
+        fv.open("C://ELECT//VoterData.txt",ios::out);
         for(int i=0; i<totvt; i++)
         {
             fv.write((char*)&vt[i],sizeof(vt[i]));
@@ -1447,7 +1157,7 @@ void storedata()
     if(totct!=0)
     {
         ofstream fc;
-        fc.open("CandidateData.txt",ios::out);
+        fc.open("C://ELECT//CandidateData.txt",ios::out);
         for(int i=0; i<totct; i++)
         {
             fc.write((char*)&ct[i],sizeof(ct[i]));
@@ -1459,33 +1169,33 @@ void storedata()
 void savefile()
     {
      ofstream fvt,fct;
-     fvt.open("D://VtData.txt",ios::out);
+     fvt.open("C://ELECT//VoterList.txt",ios::out);
      if(totvt!=0)
-       {
+     {
         for(int i=0;i<totvt;i++)
-           {
-            fvt<<"Name : "<<vt[i].name<<"\n";
-            fvt<<"Voter ID : "<<vt[i].vid<<"\n";
-            fvt<<"Aadhar Number : "<<vt[i].aadhar<<"\n";
-            fvt<<"Gender : "<<vt[i].gender<<"\n";
-            fvt<<"Mobile Number : "<<vt[i].mob<<"\n";
-            fvt<<"Date Of Birth : "<<vt[i].d<<" - "<<vt[i].m<<" - "<<vt[i].y<<"\n";
-           }
-       }
+        {
+            fvt<<"Name: "<<vt[i].name<<"\n";
+            fvt<<"Voter ID: "<<vt[i].vid<<"\n";
+            fvt<<"Aadhar Number: "<<vt[i].aadhar<<"\n";
+            fvt<<"Gender: "<<vt[i].gender<<"\n";
+            fvt<<"Mobile Number: "<<vt[i].mob<<"\n";
+            fvt<<"Date Of Birth: "<<vt[i].d<<"-"<<vt[i].m<<"-"<<vt[i].y<<"\n";
+        }
+     }
      fvt.close();
-     fct.open("D://CtData.txt",ios::out);
+     fct.open("C://ELECT//CandidateList.txt",ios::out);
      if(totct!=0)
        {
         for(int i=0;i<totct;i++)
            {
-            fct<<"Name : "<<ct[i].name<<"\n";
-            fct<<"Candidate ID : "<<ct[i].candidate_id<<"\n";
-            fct<<"Aadhar Number : "<<ct[i].aadhar<<"\n";
-            fct<<"Gender : "<<ct[i].gender<<"\n";
-            fct<<"Mobile Number : "<<ct[i].mob<<"\n";
-            fct<<"Date Of Birth : "<<ct[i].d<<" - "<<ct[i].m<<" - "<<ct[i].y<<"\n";
-            fct<<"Party : "<<ct[i].party_name<<"\n";
-            fct<<"Party Slogan: "<<ct[i].party_slogan<<"\n";
+            fct<<"Name: "<<ct[i].name<<";\n";
+            fct<<"Candidate ID: "<<ct[i].candidate_id<<";\n";
+            fct<<"Aadhar Number: "<<ct[i].aadhar<<";\n";
+            fct<<"Gender: "<<ct[i].gender<<";\n";
+            fct<<"Mobile Number: "<<ct[i].mob<<";\n";
+            fct<<"Date Of Birth: "<<ct[i].d<<" - "<<ct[i].m<<" - "<<ct[i].y<<";\n";
+            fct<<"Party: "<<ct[i].party_name<<";\n";
+            fct<<"Party Slogan: "<<ct[i].party_slogan<<";;\n";
            }
        }
      fct.close();
@@ -1494,7 +1204,7 @@ void savefile()
 int main()
 {
     system("Color 0A");
-    cout << "Welcome to India 2020 Election System!\n";
+    cout << "Welcome to India 2021 Election System!\n";
     system("PAUSE");
     getdata();
     system("CLS");
@@ -1502,22 +1212,15 @@ int main()
         totct--;
     if(totvt!=0)
         totvt--;
-//    cout<<"These are "<<totct<<" candidates found stored till now : \n\n";
-//    for(int i=0;i<totct;i++)
-//        ct[i].showdata();
-//    system("PAUSE");
-//    system("CLS");
-//    cout<<"These are "<<totvt<<" voters found stored till now : \n\n";
-//    for(int i=0;i<totvt;i++)
-//        vt[i].showdata();
-//    system("PAUSE");
 
 Choose:
-    ;
+
     system("CLS");
     int logop;
-    cout << "Choose the login option: \n";
-    cout << "1. Voter Login\n2. Candidate Login\n3. Admin Login\n4. Exit\n";
+    cout << "Login Menu\n";
+    cout << "----------\n";
+    cout << "\nChoose the login option: \n\n";
+    cout << "1. Voter Login\n2. Candidate Login\n3. Admin Login\n4. Exit\n\n";
     cout << "-> ";
     cin >> logop;
     switch(logop)
@@ -1534,15 +1237,11 @@ Choose:
     case 4:
         storedata();
         savefile();
-        lsbencvoter();
-        lsbenccandidate();
-        remove("D://CtData.txt");
-        remove("D://VtData.txt");
         return 0;
     default:
         cout<<"Invalid Choice";
+        system("PAUSE");
         goto Choose;
     }
     goto Choose;
-}
-
+} 
